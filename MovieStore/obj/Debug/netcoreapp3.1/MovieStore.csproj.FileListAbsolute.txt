@@ -1,0 +1,13 @@
+/Users/Reenu/Projects/MovieStore/MovieStore/obj/Debug/netcoreapp3.1/MovieStore.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Reenu/Projects/MovieStore/MovieStore/obj/Debug/netcoreapp3.1/MovieStore.AssemblyInfoInputs.cache
+/Users/Reenu/Projects/MovieStore/MovieStore/obj/Debug/netcoreapp3.1/MovieStore.AssemblyInfo.cs
+/Users/Reenu/Projects/MovieStore/MovieStore/obj/Debug/netcoreapp3.1/MovieStore.csproj.CoreCompileInputs.cache
+/Users/Reenu/Projects/MovieStore/MovieStore/bin/Debug/netcoreapp3.1/MovieStore.deps.json
+/Users/Reenu/Projects/MovieStore/MovieStore/bin/Debug/netcoreapp3.1/MovieStore.runtimeconfig.json
+/Users/Reenu/Projects/MovieStore/MovieStore/bin/Debug/netcoreapp3.1/MovieStore.runtimeconfig.dev.json
+/Users/Reenu/Projects/MovieStore/MovieStore/bin/Debug/netcoreapp3.1/MovieStore.dll
+/Users/Reenu/Projects/MovieStore/MovieStore/bin/Debug/netcoreapp3.1/MovieStore.pdb
+/Users/Reenu/Projects/MovieStore/MovieStore/obj/Debug/netcoreapp3.1/MovieStore.dll
+/Users/Reenu/Projects/MovieStore/MovieStore/obj/Debug/netcoreapp3.1/MovieStore.pdb
+/Users/Reenu/Projects/MovieStore/MovieStore/obj/Debug/netcoreapp3.1/MovieStore.genruntimeconfig.cache
+/Users/Reenu/Projects/MovieStore/MovieStore/obj/Debug/netcoreapp3.1/MovieStore.csproj.AssemblyReference.cache

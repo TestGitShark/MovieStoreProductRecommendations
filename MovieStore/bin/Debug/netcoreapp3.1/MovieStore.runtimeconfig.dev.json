@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/Reenu/.dotnet/store/|arch|/|tfm|",
+      "/Users/Reenu/.nuget/packages"
+    ]
+  }
+}

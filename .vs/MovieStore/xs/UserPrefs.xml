@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{3BF90ACD-692D-48DF-9979-C0FE04FE4585}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MovieStore/CurrentUserSession.cs">
+    <Files>
+      <File FileName="MovieStore/Program.cs" Line="34" Column="13" />
+      <File FileName="MovieStore/Product.cs" />
+      <File FileName="MovieStore/User.cs" />
+      <File FileName="MovieStore/IProduct.cs" />
+      <File FileName="MovieStore/CurrentUserSession.cs" Line="31" Column="49" />
+      <File FileName="MovieStore/CreateUserSessionList.cs" />
+      <File FileName="MovieStore/CreateUserList.cs" />
+      <File FileName="MovieStore/CreateProductList.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MovieStore" expanded="True">
+            <Node name="MovieStore" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="CurrentUserSession.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../MovieStore/CreateProductList.cs" line="24" column="20" endLine="24" endColumn="29" offsetX="-1" offsetY="-1" expression="movieList[0].Keyword4" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.MovieStore PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
