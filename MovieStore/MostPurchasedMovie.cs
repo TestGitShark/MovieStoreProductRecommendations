@@ -6,29 +6,18 @@ namespace MovieStore
 {
     public class MostPurchasedMovie
     {
-        public static List<IProduct> GetMostPurchasedMovies(List<IProduct> movies)
+        public static List<IProduct> GetMostPurchasedMovies(List<IProduct> movies,int maxnoOfrecords)
         {
-            int maxSaleCount = movies.Max(x => x.PurchaseCount);
-            List<IProduct> highlySoldMovies = new List<IProduct>();
-            if (maxSaleCount==0)
+
+
+            List<IProduct> highlySoldMovies = movies.FindAll(x => x.PurchaseCount != 0);
+            highlySoldMovies=highlySoldMovies.OrderByDescending(x => x.PurchaseCount).ThenByDescending(y => y.Rating).ToList();
+
+            if (maxnoOfrecords < highlySoldMovies.Count)
             {
-                Console.WriteLine($"No products sold yet");
-                
+                highlySoldMovies = highlySoldMovies.GetRange(0, maxnoOfrecords);
             }
-            else
-            {
-                highlySoldMovies = movies.FindAll(x => x.PurchaseCount == maxSaleCount).ToList();
-
-                Console.WriteLine($"Highly sold movies");
-
-                foreach (IProduct product in highlySoldMovies)
-                {
-                    Console.WriteLine($"Id-{product.Id} Movie Name-{product.Name} Sales count-{product.PurchaseCount} Rating-{product.Rating}");
-                }
-               
-            }
-
-
+          
             return highlySoldMovies;
         }
     }

@@ -22,11 +22,16 @@ namespace MovieStore
                     int.TryParse(items[2], out year);
                     float.TryParse(items[8], out rating);
                     float.TryParse(items[9], out price);
-                    keyWords.Add(items[3].Trim());
-                    keyWords.Add(items[4].Trim());
-                    keyWords.Add(items[5].Trim());
-                    keyWords.Add(items[6].Trim());
-                    keyWords.Add(items[7].Trim());
+                    if(!string.IsNullOrEmpty(items[3].Trim()))
+                        keyWords.Add(items[3].Trim());
+                    if (!string.IsNullOrEmpty(items[4].Trim()))
+                        keyWords.Add(items[4].Trim());
+                    if (!string.IsNullOrEmpty(items[5].Trim()))
+                        keyWords.Add(items[5].Trim());
+                    if (!string.IsNullOrEmpty(items[6].Trim()))
+                        keyWords.Add(items[6].Trim());
+                    if (!string.IsNullOrEmpty(items[7].Trim()))
+                        keyWords.Add(items[7].Trim());
                     movieList.Add(new Product
                     {
                         Id = movieId,

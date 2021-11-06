@@ -9,6 +9,8 @@ namespace MovieStore
         public string Name { get; set; }
         public List<int>moviesViewed { get; set; }
         public List<int>moviesPurchased { get; set; }
+
+
        
     }
 }

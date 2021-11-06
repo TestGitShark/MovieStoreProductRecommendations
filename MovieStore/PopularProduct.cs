@@ -5,57 +5,106 @@ namespace MovieStore
 {
     public class PopularProduct
     {
-        private static float goodRating = 3.5f;
-        private static int noOfPopularProducts = 3;
+     
+        private static int noOfPopularProducts = 4;
+        private static float goodRating = 4f;
+        // if you take more records compared to noOfPopularProducts then you will get popular products with mostly sold items
+        // if less then mostly based on rating
+        private static int noOfRecords = 4; 
         public static List<IProduct> GetMostPopularMovies(List<IProduct> movieList)
         {
-            List<IProduct> highlySoldMovies = MostPurchasedMovie.GetMostPurchasedMovies(movieList);
-            List<IProduct> highlyRatedMovies = MostRatedMovies.GetMostRatedMovies(movieList,goodRating );
+
+            List<IProduct> highlySoldMovies = MostPurchasedMovie.GetMostPurchasedMovies(movieList, noOfRecords);
+            MessageService.PrintMessage($"Highly sold Movies");
+            MessageService.PrintProductDetails(highlySoldMovies);
+
+            List <IProduct> highlyRatedMovies = MostRatedMovies.GetMostRatedMovies(movieList, goodRating);
+             MessageService.PrintMessage($"Movies with rating {goodRating} or more: ");
+             MessageService.PrintProductDetails(highlyRatedMovies);
+            
             List<IProduct> highlyPopularMovies = new List<IProduct>();
 
 
-            if(highlySoldMovies.Count!=0 && highlyRatedMovies.Count!=0)
+            if (highlySoldMovies.Count != 0)
             {
-                //There are movies with high rating & high purchse count
-                foreach (IProduct movie in highlySoldMovies)
+                //popular movie= high selling rate & good rating
+                highlyPopularMovies = MostRatedMovies.GetMostRatedMovies(highlySoldMovies, goodRating);
+                highlyPopularMovies = highlyPopularMovies.OrderByDescending(x => x.PurchaseCount).ThenByDescending(y => y.Rating).ToList();
+                //If number of popular movies is less than required number ,
+                //add movies with high rating (that are already not there) to the list
+
+                if (highlyPopularMovies.Count < noOfPopularProducts)
                 {
-                    if (highlyRatedMovies.Contains(movie))
+                    for (int i = 0; i < highlyRatedMovies.Count; i++)
                     {
-                        highlyPopularMovies.Add(movie);
+                        if (!highlyPopularMovies.Contains(highlyRatedMovies[i]))
+                        {
+                            highlyPopularMovies.Add(highlyRatedMovies[i]);
+                            if (highlyPopularMovies.Count == noOfPopularProducts)
+                                break;
+                        }
                     }
+                    //check if the count is still less than required no
+                    // then add from highly sold list
+
                 }
-                if (highlyPopularMovies.Count == 0)
+                else if (highlyPopularMovies.Count > noOfPopularProducts)
                 {
-                    // Movies with high rating are not among the most sold ones
-                    //Popular movies = movies with max rating in the highly sold category
-                    highlyPopularMovies=SoldMoviesWithMaxRating.GetMoviesWithMaxRating(highlySoldMovies);
+                    //select the first n products
+                    highlyPopularMovies = highlyPopularMovies.GetRange(0, noOfPopularProducts);
+                }
 
-                }     
+
+
+
             }
-
-            else if(highlySoldMovies.Count == 0 && highlyRatedMovies.Count == 0)
-
+            else
             {
-                Console.WriteLine($"No popular movies as  there are no sold movies with good rating. ");
-            }
-            else if (highlySoldMovies.Count == 0 && highlyRatedMovies.Count != 0)
+                //No Sold movies
+                if (highlyRatedMovies.Count > 0)
+                {
+                    //popular movies = highly rated movies
+                    if (highlyRatedMovies.Count > noOfPopularProducts)
+                    {
+                        //first n highly rated products
+                        highlyPopularMovies = highlyRatedMovies.GetRange(0, noOfPopularProducts);
+                    }
+                    else
+                    {
+                        //existing highly rated products
+                        highlyPopularMovies = highlyRatedMovies;
+                    }
 
-            {
-                highlyPopularMovies = ProductWithMaxRating.GetMoviesWithMaxRating(highlyRatedMovies);
-            }
-            else if (highlySoldMovies.Count != 0 && highlyRatedMovies.Count == 0)
+                }
+                else
+                {
+                    Console.WriteLine($"No popular movie as no movies with rating  {goodRating}  or more & no sold movies");
+                }
 
-            {
-                //Popular movies based on sales count
-                highlyPopularMovies = highlySoldMovies;
             }
 
-            Console.WriteLine($"Popular movies");
-            foreach (IProduct product in highlyPopularMovies)
-            {
-                Console.WriteLine($"Id-{product.Id} Movie Name-{product.Name} Sales Count-{product.PurchaseCount} Rating-{product.Rating}");
-            }
+            MessageService.PrintMessage("POPULAR MOVIES");
+            MessageService.PrintMessage("******************************************");
+            MessageService.PrintProductDetails(highlyPopularMovies);
             return highlyPopularMovies;
+
+          
+
+              }
+
+
+
+
+
         }
     }
-}
+
+
+
+
+
+
+// {}   []
+
+
+ 

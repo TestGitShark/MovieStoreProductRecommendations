@@ -1,14 +1,11 @@
-﻿<Properties StartupConfiguration="{3BF90ACD-692D-48DF-9979-C0FE04FE4585}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MovieStore/CurrentUserSession.cs">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{3BF90ACD-692D-48DF-9979-C0FE04FE4585}|Default">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="MovieStore/Program.cs" Line="34" Column="13" />
-      <File FileName="MovieStore/Product.cs" />
-      <File FileName="MovieStore/User.cs" />
-      <File FileName="MovieStore/IProduct.cs" />
-      <File FileName="MovieStore/CurrentUserSession.cs" Line="31" Column="49" />
-      <File FileName="MovieStore/CreateUserSessionList.cs" />
-      <File FileName="MovieStore/CreateUserList.cs" />
-      <File FileName="MovieStore/CreateProductList.cs" />
+      <File FileName="MovieStore/Program.cs" Line="57" Column="1" IsPinned="True" />
+      <File FileName="MovieStore/PopularProduct.cs" Line="89" Column="40" />
+      <File FileName="MovieStore/MostPurchasedMovie.cs" Line="10" Column="10" />
+      <File FileName="MovieStore/MostRatedMovies.cs" />
+      <File FileName="MovieStore/CurrentUserSession.cs" Line="27" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,10 +13,13 @@
           <Node name="MovieStore" expanded="True">
             <Node name="MovieStore" expanded="True">
               <Node name="Data" expanded="True" />
-              <Node name="CurrentUserSession.cs" selected="True" />
+              <Node name="PopularProduct.cs" selected="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

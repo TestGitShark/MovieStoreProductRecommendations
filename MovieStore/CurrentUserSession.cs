@@ -7,42 +7,54 @@ namespace MovieStore
     {
         public int   UserId { get; set; }
         public int ViewingMovieId { get; set; }
-        private static int noOfMatchingKeyWords = 3;
-        public List<IProduct> GetRecommendedMovies(List<IProduct> movieList)
+        private static int noOfRecommendations = 3;
+
+        //Recommended Movies= movies with maximum matching keywords
+        //&& movies not already bought by the user
+        public List<IProduct> GetRecommendedMovies(List<IProduct> movieList,List<int>alreadyBoughtmovies)
         {
+            int noOfMatchingKeyWords;
             List<IProduct> moviesWithSimilarKw = new List<IProduct>();
-
             IProduct viewingProduct = movieList.Find(x => x.Id == ViewingMovieId);
-            movieList.Remove(viewingProduct);
-            foreach (IProduct movie in movieList)
+            noOfMatchingKeyWords = viewingProduct.Keywords.Count;
+
+            List<IProduct> copyOfMovieList = movieList.ToList();
+            copyOfMovieList.Remove(viewingProduct);
+            foreach (int i in alreadyBoughtmovies)
             {
-                //movies with 3 or more same keywords added to recommendations 
-                List<string> commonKeyWords = new List<string>();
-                commonKeyWords = viewingProduct.Keywords.Intersect(movie.Keywords, StringComparer.InvariantCultureIgnoreCase).ToList();
-                commonKeyWords.RemoveAll(x => string.IsNullOrEmpty(x));
-                if (commonKeyWords.Count >= noOfMatchingKeyWords)
-                {
-                    moviesWithSimilarKw.Add(movie);
-
-                }
+                //remove already bought movies from recommendations
+                copyOfMovieList.Remove(copyOfMovieList.Find(x => x.Id == i));
             }
+            //Find movies with most matching keywords as recommendation
+            do
+            {
+                for(int i=0;i< copyOfMovieList.Count;i++)
+                {
+                    //movies with same keywords added to recommendations 
+                    List<string> commonKeyWords = new List<string>();
+                    commonKeyWords = viewingProduct.Keywords.Intersect(copyOfMovieList[i].Keywords, StringComparer.InvariantCultureIgnoreCase).ToList();
+                    if (commonKeyWords.Count == noOfMatchingKeyWords)
+                    {
+                        moviesWithSimilarKw.Add(copyOfMovieList[i]);   
+                    }
+                    if (moviesWithSimilarKw.Count == noOfRecommendations)
+                        break;
+                    
+                }
+                --noOfMatchingKeyWords;
+               } while (moviesWithSimilarKw.Count< noOfRecommendations && noOfMatchingKeyWords >0);
 
-            Console.WriteLine($"UserId-{UserId}  Viewing Movie Id-{ViewingMovieId}");
+          
+            MessageService.PrintMessage($"USER ID-{UserId}  Viewing Movie Id-{ViewingMovieId}  Viewing Movie-{viewingProduct.Name}");
+           
             foreach (string kw in viewingProduct.Keywords)
             {
                 Console.WriteLine($"{kw}");
             }
 
-            Console.WriteLine($"Recommended Movies");
-            foreach (IProduct movie in moviesWithSimilarKw)
-            {
-                Console.WriteLine($"MovieId-{movie.Id} MovieName-{movie.Name} ");
-                foreach(string kw in movie.Keywords)
-                {
-                    Console.WriteLine($"{kw}");
-                }
-            }
-
+            MessageService.PrintMessage("YOU MAY ALSO LIKE...");
+            MessageService.PrintProductDetailsWithKeyWords(moviesWithSimilarKw);
+           
             return moviesWithSimilarKw;
         }
 
