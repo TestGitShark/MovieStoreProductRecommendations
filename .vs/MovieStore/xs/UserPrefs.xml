@@ -1,9 +1,9 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{3BF90ACD-692D-48DF-9979-C0FE04FE4585}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="MovieStore/Program.cs" Line="57" Column="1" IsPinned="True" />
-      <File FileName="MovieStore/PopularProduct.cs" Line="89" Column="40" />
-      <File FileName="MovieStore/MostPurchasedMovie.cs" Line="10" Column="10" />
+      <File FileName="MovieStore/Program.cs" Line="44" Column="124" IsPinned="True" />
+      <File FileName="MovieStore/PopularProduct.cs" Line="90" Column="122" />
+      <File FileName="MovieStore/MostPurchasedMovie.cs" />
       <File FileName="MovieStore/MostRatedMovies.cs" />
       <File FileName="MovieStore/CurrentUserSession.cs" Line="27" Column="14" />
     </Files>

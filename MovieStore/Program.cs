@@ -36,17 +36,15 @@ namespace MovieStore
 
                 List<IProduct> highlyPopularMovies = PopularProduct.GetMostPopularMovies(movieList);
 
-
-
                 //Read CurrentUserSession.txt and create a user session list
                 List<CurrentUserSession> currentUsers = CreateUserSessionList.GetUserSessionList(FileReader.GetLinesFromFile(userSessionPath));
 
 
                 MessageService.PrintMessage("RECOMMENDATIONS FOR INDIVIDUAL USERS");
-                MessageService.PrintMessage("**************************************************");
+                MessageService.PrintMessage("***************************************************************************");
                 foreach (CurrentUserSession currentUser in currentUsers)
                 {
-                    // recommended movies with matching keywords
+                    // recommended movies with  maximum matching keywords but not already bought
                     List<int> moviesAlreadyBought = users.Find(x => x.Id == currentUser.UserId).moviesPurchased;
 
                     List<IProduct> recommendedMovies = currentUser.GetRecommendedMovies(movieList, moviesAlreadyBought);
@@ -58,9 +56,7 @@ namespace MovieStore
                         {
                             MessageService.PrintSingleMovieDetails(movieList.Find(x => x.Id == oftenBought.BoughtTogetherProduct));
                         }
-
                     }
-
 
                 }
             }

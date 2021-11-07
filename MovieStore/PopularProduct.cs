@@ -15,13 +15,16 @@ namespace MovieStore
         {
 
             List<IProduct> highlySoldMovies = MostPurchasedMovie.GetMostPurchasedMovies(movieList, noOfRecords);
+
+            MessageService.PrintMessage($"PRINTING MOVIES WITH GOOD RATING & HIGH PURCHASE COUNT FOR EASY ANALYSIS");
+            MessageService.PrintMessage("***************************************************************************");
             MessageService.PrintMessage($"Highly sold Movies");
             MessageService.PrintProductDetails(highlySoldMovies);
 
             List <IProduct> highlyRatedMovies = MostRatedMovies.GetMostRatedMovies(movieList, goodRating);
              MessageService.PrintMessage($"Movies with rating {goodRating} or more: ");
              MessageService.PrintProductDetails(highlyRatedMovies);
-            
+            MessageService.PrintMessage("*****************************************************************************");
             List<IProduct> highlyPopularMovies = new List<IProduct>();
 
 
@@ -84,7 +87,7 @@ namespace MovieStore
             }
 
             MessageService.PrintMessage("POPULAR MOVIES");
-            MessageService.PrintMessage("******************************************");
+            MessageService.PrintMessage("*****************************************************************************");
             MessageService.PrintProductDetails(highlyPopularMovies);
             return highlyPopularMovies;
 
